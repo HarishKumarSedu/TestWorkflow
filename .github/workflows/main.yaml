@@ -44,10 +44,13 @@ jobs:
         run: ls -a 
 
       - name: Push
-        uses: s0/git-publish-subdir-action@develop
-        env:
-          REPO: self
-          BRANCH: main # The branch name where you want to push the assets
-          FOLDER: build # The directory where your assets are generated
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # GitHub will automatically add this - you don't need to bother getting a token
-          MESSAGE: "Build: ({sha}) {msg}" # The commit message
+        run: |
+          echo "Test push commit to the remote in the workflow" >> test.txt
+
+          git config --global user.name "HarishKumarSedu"
+          git config --global user.email "Harishkumarsedu@gmail.com"
+
+          git add build
+          git commit -m "Update build"
+          git push
+
