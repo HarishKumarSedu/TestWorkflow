@@ -33,10 +33,9 @@ jobs:
           pip install -r requirements.txt -U
           python exe.py build
           build_directory =  "${{ github.workspace }}/build"
-          echo build_directory
-          # if [ -d "${build_directory}" ]; then
-          #   echo "${build_directory} does exist."
-          # fi
+          if [ -d $build_directory" ]; then
+            echo "$build_directory does exist."
+          fi
  
       # - name: Build Zipfile
       #   run: |
