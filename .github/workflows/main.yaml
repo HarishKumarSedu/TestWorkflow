@@ -33,8 +33,7 @@ jobs:
           pip install -r requirements.txt -U
           python exe.py build
           ls -a 
-          workspace = ${{ github.workspace }}
-          echo $workspace
+          echo ${{ github.workspace }}
  
       # - name: Build Zipfile
       #   run: |
