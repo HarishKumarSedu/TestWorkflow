@@ -64,7 +64,8 @@ jobs:
           type: 'zip'
           filename: 'gui.zip'
           path: ${{github.workspace}}/build
-          
+
       - name: post zip
-        run: dir
+        run: |
+          dir
       
