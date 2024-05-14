@@ -33,8 +33,8 @@ jobs:
           pip install -r requirements.txt -U
           python exe.py build
           # echo ${{ github.workspace }}
-          if [ -d "${{ github.workspace }}/build" ]; then
-            echo "${{ github.workspace }}/build does exist."
+          if [ -d "${{ github.workspace }}\build" ]; then
+            echo "${{ github.workspace }}\build does exist."
           fi
  
       # - name: Build Zipfile
