@@ -32,7 +32,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt -U
           python -m PyInstaller --onefile main.py
-          rm -f ivm-gui.zip
+          rmdir -f ivm-gui.zip
           dir 
 
       - name : Build Zip file 
