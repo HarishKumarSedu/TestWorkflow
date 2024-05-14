@@ -73,7 +73,8 @@ jobs:
       #     remote_port: ${{ secrets.DEPLOY_PORT }} 
       #     remote_user: ${{ secrets.DEPLOY_USER }} 
       #     remote_key: ${{ secrets.DEPLOY_KEY }}  
-      - run: |
+      - name: Git Config
+        run: |
           ls - a
           git config user.name github-actions[bot]
           git config user.email github-actions[bot]@users.noreply.github.com
