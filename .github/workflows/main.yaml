@@ -36,9 +36,7 @@ jobs:
           workspace = ${{ github.workspace }}
           build_directory =  "$workspace/build"
 
-          if [ -d "$build_directory" ]; then
-            echo "$build_directory does exist."
-          fi
+          echo build_directory
  
       # - name: Build Zipfile
       #   run: |
