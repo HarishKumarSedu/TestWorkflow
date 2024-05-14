@@ -80,6 +80,7 @@ jobs:
           git config --global user.name 'HarishKumarSedu'
           git config --global user.email 'HarishKumarSedu@users.noreply.github.com'
           git remote set-url origin https://x-access-token:${{ secrets.PAT }}@github.com/${{ github.repository }}
+          git add *
           git commit -am "Automated report"
           git push
     
