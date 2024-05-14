@@ -3,13 +3,11 @@
 name: Windows exe
 
 on:
-  push:
-    branches: [main]
-  # workflow_call:
-  #   inputs:
-  #     binary-artifact-name:
-  #       required: true
-  #       type: string
+  workflow_call:
+    inputs:
+      binary-artifact-name:
+        required: true
+        type: string
 
 
 jobs:
@@ -52,22 +50,11 @@ jobs:
         uses: thedoctor0/zip-release@0.7.5
         with:
           type: 'zip'
-          filename: 'gui.zip'
+          filename: 'ivm-gui.zip'
           path: ${{github.workspace}}/build
 
       - name: post zip
         run: |
           dir
-          
-      - name: rsync deployments
-        uses: burnett01/rsync-deployments@5.2
-        with:
-          switches: -avzr --delete --exclude="" --include="" --filter=""
-          path: gui.zip
-          remote_path: ${{ secrets.DEPLOY_PATH }} 
-          remote_host: ${{ secrets.DEPLOY_HOST }} 
-          remote_port: ${{ secrets.DEPLOY_PORT }} 
-          remote_user: ${{ secrets.DEPLOY_USER }} 
-          remote_key: ${{ secrets.DEPLOY_KEY }}  
 
       
