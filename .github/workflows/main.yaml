@@ -32,7 +32,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt -U
           python exe.py build
-          ls -a 
+          dir 
       - name: Install zip
         uses: montudor/action-zip@v1
 
