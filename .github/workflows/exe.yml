@@ -58,7 +58,7 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v4
         with:
-          name: ivm-gui-zip
+          name: ivm-gui.zip
           path: ${{ github.workspace }}/ivm-gui.zip
       - name: List Checkout files 
         run: |
