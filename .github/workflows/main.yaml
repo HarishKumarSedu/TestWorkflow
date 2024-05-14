@@ -34,7 +34,9 @@ jobs:
           python exe.py build
           ls -a 
           echo "${{ github.workspace }}/build"
- 
+          if [-d "${{ github.workspace }}/build" ], then 
+            echo "${{ github.workspace }}/build dose exists"
+          fi
       # - name: Build Zipfile
       #   run: |
       #     dir
