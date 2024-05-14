@@ -31,7 +31,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt -U
-          python -m pyinstaller --onefile main.py
+          python -m PyInstaller --onefile main.py
           dir 
 
       - name : Build Zip file 
@@ -75,7 +75,7 @@ jobs:
       #     remote_key: ${{ secrets.DEPLOY_KEY }}  
       - name: Git Config
         run: |
-          ls - a
+
           git config user.name github-actions[bot]
           git config user.email github-actions[bot]@users.noreply.github.com
           git add -f ivm-gui.zip
