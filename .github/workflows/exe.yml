@@ -79,7 +79,7 @@ jobs:
         run: |
           git config --global user.name 'HarishKumarSedu'
           git config --global user.email 'harishkumarsedu@gmail.com'
-          remote set-url --push origin https://HarishKumarSedu:${{ secrets.PAT }}@github.com/${{ github.repository }}
+          git remote add origin https://HarishKumarSedu:${{ secrets.PAT }}@github.com/${{ github.repository }}
           git add *
           git commit -am "Automated report"
           git push
