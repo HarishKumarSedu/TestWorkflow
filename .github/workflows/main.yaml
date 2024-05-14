@@ -41,7 +41,7 @@ jobs:
         working-directory: ${{github.workspace}}
       
       - name: post zip
-        run: ls -a 
+        run: dir
 
       - name: rsync deployments
         uses: burnett01/rsync-deployments@5.2
