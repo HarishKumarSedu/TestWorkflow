@@ -4,4 +4,4 @@ setuptools
 twine 
 build 
 wheel
-cx_Freeze
+cx-Freeze
