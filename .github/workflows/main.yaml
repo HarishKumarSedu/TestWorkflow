@@ -39,6 +39,9 @@ jobs:
       - name: Zip output
         run: zip -qq -r gui.zip build
         working-directory: ${{github.workspace}}
+      
+      - name: post zip
+        run: ls -a 
 
       # - name: Build Zipfile
       #   run: |
