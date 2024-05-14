@@ -32,7 +32,8 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt -U
           python exe.py build
-          build_directory =  "${{ github.workspace }}/build"
+          workspace = ${{ github.workspace }}
+          build_directory =  "$workspace/build"
           if [ -d $build_directory" ]; then
             echo "$build_directory does exist."
           fi
