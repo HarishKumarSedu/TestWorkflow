@@ -34,8 +34,6 @@ jobs:
           python exe.py build
           ls -a 
           workspace = ${{ github.workspace }}
-          # build_directory =  "$workspace/build"
-
           echo $workspace
  
       # - name: Build Zipfile
