@@ -43,14 +43,8 @@ jobs:
       - name: post zip
         run: ls -a 
 
-      # - name: Build Zipfile
-      #   run: |
-      #     dir
-      #     cd D:\a\ivm-test-gui\ivm-test-gui\dist\pyinstaller\win_amd64\
-      #     Compress-Archive -Path .\ivm-gui\ -DestinationPath .\ivm-gui.zip
-      #     dir
-      # - name: Upload binary artifact
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: ${{ inputs.binary-artifact-name }}
-      #     path: D:\a\ivm-test-gui\ivm-test-gui\dist\pyinstaller\win_amd64\ivm-gui.zip
+      - name: Upload zip to git 
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ inputs.gui.zip }}
+          path: ${{github.workspace}}
