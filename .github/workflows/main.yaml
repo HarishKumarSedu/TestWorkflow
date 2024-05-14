@@ -14,7 +14,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     strategy:
       fail-fast: false
       matrix:
@@ -43,12 +43,12 @@ jobs:
       - name: post zip
         run: ls -a 
 
-      - name: Push
-        run: |
-          git config --global user.name "harishkumarsedu@gmail.com"
-          git config --global user.email "HarishKumarSedu@users.noreply.github.com"
-          git config advice.addIgnoredFile false
-          git add -f gui.zp
-          git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
-          git push
+      # - name: Push
+      #   run: |
+      #     git config --global user.name "harishkumarsedu@gmail.com"
+      #     git config --global user.email "HarishKumarSedu@users.noreply.github.com"
+      #     git config advice.addIgnoredFile false
+      #     git add -f gui.zp
+      #     git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
+      #     git push
 
