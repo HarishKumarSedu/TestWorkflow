@@ -1,0 +1,7 @@
+PyQt5
+pip-chill 
+setuptools 
+twine 
+build 
+wheel
+

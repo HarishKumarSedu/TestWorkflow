@@ -1,0 +1,49 @@
+# This workflow will install Python dependencies, run tests and lint with a variety of Python versions
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+
+name: Windows exe
+
+on:
+  workflow_call:
+    inputs:
+      binary-artifact-name:
+        required: true
+        type: string
+
+
+jobs:
+  build:
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11"]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v3
+        with:
+           python-version: ${{ matrix.python-version }}
+      - name: build package
+        run: |
+          python -m pip install --upgrade pipx
+          pipx install poetry==1.8.2
+          poetry self add poetry-pyinstaller-plugin
+          poetry env use python
+          poetry update
+          poetry install
+          poetry build
+          poetry env info
+      - name: Build Zipfile
+        run: |
+          dir
+          cd D:\a\ivm-test-gui\ivm-test-gui\dist\pyinstaller\win_amd64\
+          Compress-Archive -Path .\ivm-gui\ -DestinationPath .\ivm-gui.zip
+          dir
+      - name: Upload binary artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ inputs.binary-artifact-name }}
+          path: D:\a\ivm-test-gui\ivm-test-gui\dist\pyinstaller\win_amd64\ivm-gui.zip
