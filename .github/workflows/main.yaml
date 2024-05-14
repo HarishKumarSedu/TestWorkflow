@@ -47,4 +47,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: build
-          path: ${{github.workspace}}/gui.zip
+          path: https://github.com/HarishKumarSedu/TestWorkflow/build
