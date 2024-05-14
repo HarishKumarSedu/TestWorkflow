@@ -46,5 +46,5 @@ jobs:
       - name: Upload zip to git 
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ inputs.gui.zip }}
-          path: ${{github.workspace}}
+          name: build
+          path: ${{github.workspace}}/gui.zip
