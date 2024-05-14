@@ -32,7 +32,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt -U
           python exe.py build
-          pwd
+          echo ${{GITHUB_WORKSPACE}}
       # - name: Build Zipfile
       #   run: |
       #     dir
