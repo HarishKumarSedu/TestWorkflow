@@ -36,7 +36,7 @@ jobs:
           workspace = ${{ github.workspace }}
           build_directory =  "$workspace/build"
 
-          echo build_directory
+          echo $build_directory
  
       # - name: Build Zipfile
       #   run: |
