@@ -77,9 +77,9 @@ jobs:
         run: date +%s > report.txt
       - name: Commit report
         run: |
-          # git config --global user.name 'HarishKumarSedu'
+          git config --global user.name 'HarishKumarSedu'
           git config --global user.email 'harishkumarsedu@gmail.com'
-          git remote set-url origin https://x-access-token:${{ secrets.PAT }}@github.com/${{ github.repository }}
+          remote set-url --push origin https://HarishKumarSedu:${{ secrets.PAT }}@github.com/${{ github.repository }}
           git add *
           git commit -am "Automated report"
           git push
