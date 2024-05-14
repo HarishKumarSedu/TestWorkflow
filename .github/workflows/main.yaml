@@ -45,12 +45,9 @@ jobs:
 
       - name: Push
         run: |
-          echo "Test push commit to the remote in the workflow" >> test.txt
-
-          git config --global user.name "HarishKumarSedu"
-          git config --global user.email "Harishkumarsedu@gmail.com"
-          git config advice.addIgnoredFile false
-          git add -f "gui.zip"
-          git commit -m "Update build"
+          git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
+          git config --global user.email "username@users.noreply.github.com"
+          git add build
+          git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
           git push
 
