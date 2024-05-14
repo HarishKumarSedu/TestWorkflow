@@ -19,7 +19,7 @@ jobs:
       fail-fast: false
       matrix:
         python-version: ["3.11"]
-
+    if: ${{ github.actor == 'HarishKumarSedu' }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -73,14 +73,19 @@ jobs:
       #     remote_port: ${{ secrets.DEPLOY_PORT }} 
       #     remote_user: ${{ secrets.DEPLOY_USER }} 
       #     remote_key: ${{ secrets.DEPLOY_KEY }}  
-      - name: Create report file
-        run: date +%s > report.txt
-      - name: Commit report
-        run: |
-          git config  user.name HarishKumarSedu
-          git config  user.email harishkumarsedu@gmail.com
-          git remote set-url origin https://x-access-token:HarishKumarSedu:$GITHUB_TOKEN@@github.com/${{ github.repository }}
-          git add *
-          git commit -am "Automated report"
-          git push origin main
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - run: |
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
+      - uses: fastify/github-action-merge-dependabot@v2.1.1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
     
