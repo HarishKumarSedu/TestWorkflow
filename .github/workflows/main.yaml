@@ -49,7 +49,7 @@ jobs:
 
           git config --global user.name "HarishKumarSedu"
           git config --global user.email "Harishkumarsedu@gmail.com"
-
+          git config advice.addIgnoredFile false
           git add -f "gui.zip"
           git commit -m "Update build"
           git push
