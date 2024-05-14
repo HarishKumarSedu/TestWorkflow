@@ -34,6 +34,7 @@ jobs:
           python exe.py build
           ls -a 
           build_directory =  "${{ github.workspace }}/build"
+          echo "$build_directory"
           if [-d $build_directory ]; then 
             echo "$build_directory dose exists"
           else:
