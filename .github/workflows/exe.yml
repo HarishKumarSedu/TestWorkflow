@@ -31,7 +31,7 @@ jobs:
           pip install --upgrade pip
           pip install -r requirements.txt -U
           python -m pyinstaller --onfile main.py 
-          ls -a 
+          dir
       - name : Build Zip file 
         uses: thedoctor0/zip-release@0.7.5
         with:
