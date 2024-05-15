@@ -31,15 +31,14 @@ jobs:
           sudo apt-get install python3
           pip install --upgrade pip
           pip install -r requirements.txt -U
-          pip install -U pyinstaller
-          pyinstaller --onefile main.py
+          python setup.py build
           ls -a 
       - name : Build Zip file 
         uses: thedoctor0/zip-release@0.7.5
         with:
           type: 'zip'
           filename: 'gui.zip'
-          path: ${{github.workspace}}/dist
+          path: ${{github.workspace}}/build
 
       - name: post zip
         run: |
