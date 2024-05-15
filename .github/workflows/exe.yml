@@ -27,7 +27,7 @@ jobs:
       - name: build exe package
         run: |
           sudo apt-get install python3
-          python -m pip install --upgrade pip
+          pip install --upgrade pip
           pip install -r requirements.txt -U
           python -m PyInstaller --onefile main.py
           ls -a 
