@@ -25,7 +25,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: python setup 
-        uses: actions/setup-python@v5 
+        uses: actions/setup-python@v5
+        with:
+           python-version: ${{ matrix.python-version }} 
       - name: build exe package
         run: |
           pip install --upgrade pip
@@ -65,7 +67,7 @@ jobs:
         uses: burnett01/rsync-deployments@5.2
         with:
           switches: -avzr --delete --exclude="" --include="" --filter=""
-          path: report.txt
+          path: ivm-gui.zip
           remote_path: ${{ secrets.DEPLOY_PATH }} 
           remote_host: ${{ secrets.DEPLOY_HOST }} 
           remote_port: ${{ secrets.DEPLOY_PORT }} 
