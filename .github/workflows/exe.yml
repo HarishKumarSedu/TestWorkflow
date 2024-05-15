@@ -15,7 +15,7 @@ on:
 jobs:
   build:
     runs-on: 
-        - ubuntu-latest
+        - Windows-latest
     strategy:
       fail-fast: false
       matrix:
@@ -24,45 +24,43 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-  #     - name: build exe package
-  #       run: |
-  #         sudo apt-get install python3-dev
-  #         sudo apt-get install python-dev
-  #         sudo apt-get install python3
-  #         pip install --upgrade pip
-  #         pip install setuptools
-  #         pip install -r requirements.txt -U
-  #         python setup.py build
-  #         ls -a 
-  #     - name : Build Zip file 
-  #       uses: thedoctor0/zip-release@0.7.5
-  #       with:
-  #         type: 'zip'
-  #         filename: 'gui.zip'
-  #         path: ${{github.workspace}}/build
+      - name: python setup 
+        uses: actions/setup-python@v5 
+      - name: build exe package
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt -U
+          python -m PyInstaller --onfile main.py 
+          ls -a 
+      - name : Build Zip file 
+        uses: thedoctor0/zip-release@0.7.5
+        with:
+          type: 'zip'
+          filename: 'ivm-gui.zip'
+          path: ${{github.workspace}}/dist
 
-  #     - name: post zip
-  #       run: |
-  #         dir
-  #     - name: Upload binary artifact
-  #       uses: actions/upload-artifact@v4
-  #       with:
-  #         name: ivm-gui
-  #         path: ${{github.workspace}}/gui.zip
-  # deploy:
-  #   runs-on: ubuntu-latest
-  #   needs: build
-  #   steps:
-  #     - name: Checkout repository
-  #       uses: actions/checkout@v4
-  #     - name: Download artifact
-  #       uses: actions/download-artifact@v4
-  #       with:
-  #         name: ivm-gui
-  #         path: ${{ github.workspace }}/ivm-gui.zip
-  #     - name: List Checkout files 
-  #       run: |
-  #         ls -a 
+      - name: post zip
+        run: |
+          dir
+      - name: Upload binary artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ivm-gui
+          path: ${{github.workspace}}/ivm-gui.zip
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ivm-gui
+          path: ${{ github.workspace }}/ivm-gui.zip
+      - name: List Checkout files 
+        run: |
+          ls -a 
       - name: rsync deployments
         uses: burnett01/rsync-deployments@5.2
         with:
