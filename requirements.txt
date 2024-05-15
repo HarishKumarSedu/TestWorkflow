@@ -5,4 +5,4 @@ twine
 build 
 wheel
 cx-Freeze
-PyInstaller
+pyinstaller
