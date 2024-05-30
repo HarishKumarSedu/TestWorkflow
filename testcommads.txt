@@ -1,1 +1,7 @@
 scp .\IvmInstruments-0.2.2-py3-none-any.whl harish@172.16.100.145:
+deplo_user harish
+deploy_host http://194.180.176.190
+deploy_path /var/www/html/harish
+deplo_port 22
+deplo_key 
+contabo:/var/www/html/harish/python-repo/<package-dir>/<wheel-file>
